@@ -1,3 +1,4 @@
+// Abstract Factory Design Pattern
 // Clients never create a platform object
 // They ask the factory to do that for them.
 /*
@@ -6,7 +7,7 @@
  without specifying their concrete classes.
 */
 // We must need a clien and a factory
-
+// Example: A Pokemon Factory 
 // Create an abstract product (Pokemons in this case)
 protocol Pokemon {
   // This is the definiton of an Abstract
