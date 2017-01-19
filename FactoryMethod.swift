@@ -4,6 +4,10 @@
  decide which class to instantiate. Factory Method lets
  a class defer instantiation to subclasses.
 */
+// We need
+// An interface for the factory
+// Class and subclasses implemented
+// The Factory (client) decide what subclass return 
 import Foundation
 // Create the interface
 struct cardID{ // Struct of a Library Book ID
@@ -23,7 +27,7 @@ class Book { // Generic class for a Book
     self.ID.id = n
     self.ID.genre = ""
   }
-  func showInfo() {
+  func showInfo() { // Function that shows info of the book
       print("Name: \(self.ID.name)")
       print("Author: \(self.ID.author)")
       print("Pages: \(self.ID.pages)")
@@ -32,7 +36,7 @@ class Book { // Generic class for a Book
   }
 
 }
-class Fiction:Book{
+class Fiction:Book{ // Inherited class
   // Override genre property
   override init(names:String,authors:String,pagess:Int,n:Int) {
   super.init(names:names,authors:authors,pagess:pagess,n:n)
@@ -46,14 +50,14 @@ class Novel:Book{
   super.ID.genre = "Novel"
   }
 }
-protocol BookFactory{
+protocol BookFactory{ // Interface to make books
   func createBook()-> Book // Creates a Book
 
 }
 class Library : BookFactory{
-  func createBook()->Book {
+  func createBook()->Book { // Implementing the interface method
     print("Name:")
-    let name = readLine(strippingNewline: true)
+    let name = readLine(strippingNewline: true) // We se standard IO from Swift
     print("Author:")
     let author = readLine(strippingNewline: true)
     print("Pages:")
@@ -73,5 +77,5 @@ class Library : BookFactory{
   }
 }
 var library = Library()
-let harryPotter = library.createBook()
+let harryPotter = library.createBook() // Now we can create books from different genre easy
 harryPotter.showInfo()
